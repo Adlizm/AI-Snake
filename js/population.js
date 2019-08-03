@@ -61,6 +61,12 @@ class Population{
         }
     }
     updateAndDraw(){
+        if(this.length <= 1){
+            console.log("The best Snake: ")
+            console.log(this.best);
+            Loop = false;
+            return;
+        }
         if(this.allDeath){
             this.geracion++;
             this.drawCreateGeracion();
