@@ -10,11 +10,11 @@ document.body.appendChild(canvas);
 
 const btnStart = document.getElementById("btnStart");
 const Start = () => {
-    var len = document.getElementById("leng");
+    var size = document.getElementById("size");
     var mutR = document.getElementById("mutR");
     var repR = document.getElementById("repR");
 
-    pop = new Population(len.value,mutR.value/100,repR.value/100);
+    pop = new Population(size.value,mutR.value/100,repR.value/100);
     Loop = true;
 };
 btnStart.onclick = Start;

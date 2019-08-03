@@ -1,6 +1,6 @@
 class Population{
-    constructor(length,mutationRate,reprodutionRate){
-        this.length = length;
+    constructor(size,mutationRate,reprodutionRate){
+        this.size = size;
         this.mutationRate = mutationRate;
         this.reprodutionRate = reprodutionRate;
         this.snakes = [];
@@ -11,7 +11,7 @@ class Population{
     }
     newPoputation(){
         if(this.geracion == 0){
-            for(let i = 0; i < this.length; i++){
+            for(let i = 0; i < this.size; i++){
                 this.snakes[i] = new Snake(15,15);
             }
         }else{
@@ -19,7 +19,7 @@ class Population{
             this.getBestSnake();
             
             var newSnakes = [];
-            for(let i = 1; i < this.length; i++){
+            for(let i = 1; i < this.size; i++){
                 if(Math.random() < this.reprodutionRate){
                     let num = Math.floor(Math.random()*sum);
                     let mother = this.getSnake(num);
@@ -29,7 +29,7 @@ class Population{
                 }
             }
             this.snakes = newSnakes;
-            this.length = this.snakes.length;
+            this.size = this.snakes.length;
         }
     }
     getChild(mother,father){
@@ -54,14 +54,14 @@ class Population{
         if(!this.best){
             this.best = this.snakes[0];
         }
-        for(let i = 0; i < this.length; i++){
+        for(let i = 0; i < this.size; i++){
             if(this.snakes[i].fitness > this.best.fitness){
                 this.best = this.snakes[i];
             }
         }
     }
     updateAndDraw(){
-        if(this.length <= 1){
+        if(this.size <= 1){
             console.log("The best Snake: ")
             console.log(this.best);
             Loop = false;
@@ -96,7 +96,7 @@ class Population{
         ctx.fillStyle = "#fff";
         ctx.fillText(
             "  Geracion: "+this.geracion+
-            "  Length:  "+this.length+
+            "  Size:  "+this.size+
             "  Score: "+(snake.length-4),
         0,16);
         snake.draw();
